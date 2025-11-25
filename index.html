@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <style>
+
+    /* RESET WAJIB */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden !important;
+      background: #f2f2f2;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      overflow-y: auto;
+      min-height: 100vh;
+      position: relative;
+      color: #222;
+    }
+
+    /* Dekorasi FIX agar ga keluar viewport */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;      /* FIX UTAMA agar dekorasi tidak bikin scroll */
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::before {
+      top: 40px;
+      left: 40px;
+      width: 140px;
+      height: 140px;
+      background: rgba(30, 30, 30, 0.05);
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    body::after {
+      bottom: 40px;
+      right: 40px;
+      width: 160px;
+      height: 160px;
+      background: rgba(30, 30, 30, 0.05);
+      border-radius: 30%;
+      transform: rotate(20deg);
+      filter: blur(3px);
+    }
+
+    /* HEADER */
+    header {
+      background: #1e1e1e;
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .tagline {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* Sections */
+    .section {
+      padding: 45px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    /* Project Cards */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #d8d8d8;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-top: 10px;
+      margin-right: 6px;
+      background: #1e1e1e;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+
+    .card a:hover {
+      background: #007bff;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background: #fff;
+      color: #222;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    body.dark-mode .skill-tag {
+      background: #333;
+      color: #eee;
+    }
+
+    /* FOOTER FIX */
+    footer.footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 60px;
+      width: 100%;
+    }
+
+    .footer h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .contact-list p {
+      font-size: 16px;
+      margin: 6px 0;
+    }
+
+    .socials {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-item {
+      background: #fff;
+      color: #000;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: .25s;
+    }
+
+    .social-item:hover {
+      background: #007bff;
+      color: #fff;
+    }
+
+    body.dark-mode .social-item {
+      background: #222;
+      color: #eee;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background: #181818;
+      color: #eaeaea;
+    }
+
+    body.dark-mode header {
+      background: #000;
+    }
+
+    body.dark-mode .card {
+      background: #252525;
+      color: #eaeaea;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+    }
+
+    /* THEME SWITCH */
+    .theme-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 55px;
+      height: 28px;
+      background: #ddd;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      transition: .3s;
+      z-index: 999;
+    }
+
+    .switch-ball {
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
+      font-size: 14px;
+    }
+
+    body.dark-mode .theme-switch {
+      background: #555;
+    }
+
+    body.dark-mode .switch-ball {
+      transform: translateX(26px);
+      background: #000;
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- TOGGLE -->
+<div class="theme-switch" id="themeToggle">
+  <div class="switch-ball">🌙</div>
+</div>
+
+<script>
+const toggle = document.getElementById("themeToggle");
+const ball = toggle.querySelector(".switch-ball");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  ball.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+});
+</script>
+
+<!-- HEADER -->
+<header>
+  <img src="profile.jpg" class="profile-pic">
+  <h1>Fatwa Hanafi Ibrahim</h1>
+  <p class="tagline">Front-End Developer yang suka bikin UI clean, simple, dan responsif.</p>
+</header>
+
+<!-- ABOUT -->
+<section class="section">
+  <h2>Tentang Saya</h2>
+  <p>Saya fokus ngerjain front-end simpel, responsive UI, dan pengalaman pengguna. Sering ngulik HTML, CSS, JS, dan framework modern buat bikin website lebih hidup dan nyaman dipake.</p>
+</section>
+
+<!-- PROJECTS -->
+<section class="section">
+  <h2>Projek</h2>
+  <div class="projects">
+
+    <div class="card">
+      <img src="website_portfolio_thumbnail.JPG">
+      <h3>Website Portfolio Mentahan</h3>
+      <p>Website portfolio personal dengan HTML, CSS, dan JavaScript.</p>
+      <a href="/Contoh-Website-Portfolio/index.html" target="_blank">Live Demo</a>
+      <a href="Contoh Projek Website Portfolio.zip">Download File</a>
+    </div>
+
+    <div class="card">
+      <img src="website_login_thumbnail.JPG">
+      <h3>Tampilan Login Dengan PHP</h3>
+      <p>PHP Form Login dasar untuk pemula.</p>
+      <a href="/Contoh-Projek-Form-Login-dengan-PHP.zip">Download File</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span class="skill-tag">HTML</span>
+    <span class="skill-tag">CSS</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Figma</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h2>Kontak</h2>
+  <p>0819-0539-3665/0822-2186-7016</p>
+  <p>emailkamu@example.com</p>
+
+  <div class="socials">
+    <a href="#" class="social-item">Github</a>
+    <a href="#" class="social-item">Facebook</a>
+    <a href="#" class="social-item">Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>

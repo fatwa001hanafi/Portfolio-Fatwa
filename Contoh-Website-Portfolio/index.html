@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f1f1f1;
+    }
+
+    /* ===== GLOBAL LINK STYLE ===== */
+    a {
+      text-decoration: none;
+      color: #ffcc00;
+      transition: 0.2s;
+    }
+    a:hover {
+      color: #ffd633;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffcc00;
+      margin-bottom: 25px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: #111;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      color: #f1f1f1;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
+
+    /* Mobile menu button */
+    .menu-btn {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: #ffcc00;
+    }
+
+    @media(max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        padding: 15px;
+        border-radius: 5px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .profile-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #ffcc00;
+      object-fit: cover;
+      background: #333;
+    }
+
+    .upload-btn {
+      background: #ffcc00;
+      color: #000;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .upload-btn:hover {
+      background: #e6b800;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ===== SKILLS ===== */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-item {
+      padding: 15px;
+      background: #1c1c1c;
+      border-left: 4px solid #ffcc00;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: #1c1c1c;
+      padding: 20px;
+      border-left: 4px solid #ffcc00;
+      border-radius: 5px;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      color: #ffcc00;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      text-align: center;
+    }
+
+    .contact a {
+      font-size: 18px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      background: #111;
+      color: #777;
+    }
+
+  </style>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector(".nav-links").classList.toggle("active");
+    }
+
+    function uploadPhoto(event) {
+      const img = document.getElementById("profileImage");
+      const file = event.target.files[0];
+      if (file) {
+        img.src = URL.createObjectURL(file);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">Portfolio</div>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links">
+      <a href="#tentang">Tentang</a>
+      <a href="#skill">Skill</a>
+      <a href="#project">Project</a>
+      <a href="#kontak">Kontak</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="profile-wrapper">
+      <img id="profileImage" class="profile-img"
+        src="https://i.ibb.co/r2M9H0c/default-profile.png"
+        alt="Foto Profil">
+
+      <input type="file" id="uploadInput" accept="image/*" style="display:none;" onchange="uploadPhoto(event)">
+      <button class="upload-btn" onclick="document.getElementById('uploadInput').click()">Upload Foto</button>
+    </div>
+
+    <h1 style="color:#ffcc00; font-size:32px; margin-bottom:10px;">Nama Kamu</h1>
+    <p>Front-End Developer | Web Enthusiast</p>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="container" id="tentang">
+    <h2>Tentang Saya</h2>
+    <div class="about">
+      <p>
+        Halo! Saya seorang Front-End Developer yang fokus bikin website ringan,
+        cepat, efisien, dan user-friendly. Style coding Saya simple, clean, dan
+        selalu ngarah ke pengalaman pengguna yang enak dipake.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section class="container" id="skill">
+    <h2>Skill</h2>
+    <div class="skills">
+      <div class="skill-item">HTML</div>
+      <div class="skill-item">CSS</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">Bootstrap</div>
+      <div class="skill-item">Responsive Design</div>
+      <div class="skill-item">Git</div>
+    </div>
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section class="container" id="project">
+    <h2>Project</h2>
+    <div class="projects">
+
+      <div class="project-card">
+        <h3>Project 1</h3>
+        <p>Deskripsi singkat project kamu.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 2</h3>
+        <p>Deskripsi singkat project kamu.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 3</h3>
+        <p>Deskripsi singkat project kamu.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="container" id="kontak">
+    <h2>Kontak</h2>
+    <div class="contact">
+
+      <p>Email:</p>
+      <a href="mailto:emailkamu@gmail.com">emailkamu@gmail.com</a>
+
+      <p>Instagram:</p>
+      <a href="https://instagram.com" target="_blank">@username</a>
+
+    </div>
+  </section>
+
+
+  <footer>
+    © 2025 Portfolio Kamu - All Rights Reserved
+  </footer>
+
+</body>
+</html>

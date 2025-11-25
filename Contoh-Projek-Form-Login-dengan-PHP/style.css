@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: 0.3s;
+}
+
+.container {
+    background: white;
+    padding: 25px;
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    background: white;
+    color: black;
+    transition: 0.3s;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===================
+   SWITCH DARK MODE
+=================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.switch {
+    width: 55px;
+    height: 28px;
+    background: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+}
+
+#toggleDark {
+    display: none;
+}
+
+.switch .icon {
+    position: absolute;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+.switch .sun { left: 6px; }
+.switch .moon { right: 6px; }
+
+.switch .ball {
+    width: 23px;
+    height: 23px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 3px;
+    transition: 0.25s;
+}
+
+/* MOVE BALL SAAT DARK */
+#toggleDark:checked + .switch {
+    background: #333;
+}
+
+#toggleDark:checked + .switch .ball {
+    transform: translateX(27px);
+}
+
+
+/* ===================
+   DARK MODE
+=================== */
+
+body.dark {
+    background: #121212;
+}
+
+body.dark .container {
+    background: #1f1f1f;
+    box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+body.dark input {
+    background: #2c2c2c;
+    border: 1px solid #555;
+    color: #eee;
+}
+
+body.dark button {
+    background: #2563eb;
+}
+
+body.dark a {
+    color: #80b3ff;
+}
+
+/* TEKS UTAMA (judul form) */
+body.dark .container h2 {
+    color: #f1f1f1;
+}
+
+/* TEKS DI DALAM FORM (placeholder dan teks input) */
+body.dark input::placeholder {
+    color: #bbb;
+}
+
+/* TEKS LINK */
+body.dark .link a {
+    color: #a5c8ff;
+}
+
+/* TEKS PESAN ERROR (kalau ada) */
+body.dark p {
+    color: #ff9e9e !important;
+}
+
+body.dark input {
+    color: #eee;
+}
