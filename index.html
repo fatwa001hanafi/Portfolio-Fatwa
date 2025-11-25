@@ -7,7 +7,6 @@
 
   <style>
 
-    /* RESET WAJIB */
     * {
       margin: 0;
       padding: 0;
@@ -27,11 +26,10 @@
       color: #222;
     }
 
-    /* Dekorasi FIX agar ga keluar viewport */
     body::before,
     body::after {
       content: "";
-      position: fixed;      /* FIX UTAMA agar dekorasi tidak bikin scroll */
+      position: fixed;
       z-index: -1;
       pointer-events: none;
     }
@@ -57,7 +55,6 @@
       filter: blur(3px);
     }
 
-    /* HEADER */
     header {
       background: #1e1e1e;
       padding: 40px 20px;
@@ -86,7 +83,6 @@
       opacity: 0.9;
     }
 
-    /* Sections */
     .section {
       padding: 45px 20px;
       max-width: 900px;
@@ -98,7 +94,6 @@
       margin-bottom: 20px;
     }
 
-    /* Project Cards */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -141,7 +136,6 @@
       background: #007bff;
     }
 
-    /* Skills */
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -162,7 +156,6 @@
       color: #eee;
     }
 
-    /* FOOTER FIX */
     footer.footer {
       background: #000;
       color: #fff;
@@ -210,7 +203,6 @@
       color: #eee;
     }
 
-    /* Dark Mode */
     body.dark-mode {
       background: #181818;
       color: #eaeaea;
@@ -226,7 +218,6 @@
       box-shadow: 0 4px 12px rgba(255,255,255,0.05);
     }
 
-    /* THEME SWITCH */
     .theme-switch {
       position: fixed;
       top: 20px;
@@ -270,7 +261,6 @@
 
 <body>
 
-<!-- TOGGLE -->
 <div class="theme-switch" id="themeToggle">
   <div class="switch-ball">🌙</div>
 </div>
@@ -285,43 +275,48 @@ toggle.addEventListener("click", () => {
 });
 </script>
 
-<!-- HEADER -->
 <header>
   <img src="profile.jpg" class="profile-pic">
   <h1>Fatwa Hanafi Ibrahim</h1>
   <p class="tagline">Front-End Developer yang suka bikin UI clean, simple, dan responsif.</p>
 </header>
 
-<!-- ABOUT -->
 <section class="section">
   <h2>Tentang Saya</h2>
-  <p>Saya fokus ngerjain front-end simpel, responsive UI, dan pengalaman pengguna. Sering ngulik HTML, CSS, JS, dan framework modern buat bikin website lebih hidup dan nyaman dipake.</p>
+  <p>Saya fokus ngerjain front-end simpel, responsive UI, dan pengalaman pengguna.</p>
 </section>
 
-<!-- PROJECTS -->
 <section class="section">
   <h2>Projek</h2>
   <div class="projects">
 
+    <!-- PROJECT 1 -->
     <div class="card">
-      <img src="website_portfolio_thumbnail.JPG">
+      <img src="website_portfolio_thumbnail.png">
       <h3>Website Portfolio Mentahan</h3>
       <p>Website portfolio personal dengan HTML, CSS, dan JavaScript.</p>
-      <a href="https://fatwa001hanafi.github.io/Portfolio-Fatwa/Contoh-Website-Portfolio/index.html" target="_blank">Live Demo</a>
-      <a href="Contoh Projek Website Portfolio.zip">Download File</a>
+
+      <a href="Contoh-Website-Portfolio/index.html" target="_blank">Live Demo</a>
+
+      <a href="https://github.com/fatwa001hanafi/Portfolio-Fatwa/tree/main/Contoh-Website-Portfolio"
+         target="_blank">Download File</a>
     </div>
 
+    <!-- PROJECT 2 -->
     <div class="card">
-      <img src="website_login_thumbnail.JPG">
+      <img src="website_login_thumbnail.png">
       <h3>Tampilan Login Dengan PHP</h3>
       <p>PHP Form Login dasar untuk pemula.</p>
-      <a href="/Contoh-Projek-Form-Login-dengan-PHP.zip">Download File</a>
+
+      <a href="Contoh-Projek-Form-Login-dengan-PHP/login.php" target="_blank">Live Demo</a>
+
+      <a href="https://github.com/fatwa001hanafi/Portfolio-Fatwa/tree/main/Contoh-Projek-Form-Login-dengan-PHP"
+         target="_blank">Download File</a>
     </div>
 
   </div>
 </section>
 
-<!-- SKILLS -->
 <section class="section">
   <h2>Skills</h2>
   <div class="skills">
@@ -332,10 +327,9 @@ toggle.addEventListener("click", () => {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <h2>Kontak</h2>
-  <p>0819-0539-3665/0822-2186-7016</p>
+  <p>0819-0539-3665 / 0822-2186-7016</p>
   <p>emailkamu@example.com</p>
 
   <div class="socials">
@@ -347,5 +341,3 @@ toggle.addEventListener("click", () => {
 
 </body>
 </html>
-
-
